@@ -1,0 +1,8 @@
+export { default as hasFlag } from './hasFlag'
+export { default as hasPermission } from './hasPermission'
+export { default as isDir } from './isDir'
+export { default as isDirEmpty } from './isDirEmpty'
+export { default as isFileError } from './isFileError'
+export { default as isSpecialFile } from './isSpecialFile'
+export { default as isSymlink } from './isSymlink'
+export { default as pathExists } from './pathExists'

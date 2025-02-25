@@ -1,0 +1,102 @@
+{
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": "explicit"
+    },
+    "editor.defaultFormatter": "rvest.vs-code-prettier-eslint",
+    "editor.formatOnPaste": true,
+    "editor.formatOnSave": true,
+    "editor.formatOnSaveMode": "file",
+    "editor.formatOnType": false,
+    "eslint.useFlatConfig": true,
+    "eslint.validate": [
+        "javascript",
+        "javascriptreact",
+        "typescript",
+        "typescriptreact",
+        "vue",
+        "html",
+        "markdown",
+        "json",
+        "json5",
+        "jsonc",
+        "yaml",
+        "toml",
+        "xml",
+        "gql",
+        "graphql",
+        "astro",
+        "css",
+        "less",
+        "scss",
+        "pcss",
+        "postcss"
+    ],
+    "files.autoSave": "onFocusChange",
+    "prettier.enable": false,
+    "eslint.rules.customizations": [
+        {
+            "fixable": true,
+            "rule": "style/*",
+            "severity": "off"
+        },
+        {
+            "fixable": true,
+            "rule": "format/*",
+            "severity": "off"
+        },
+        {
+            "fixable": true,
+            "rule": "*-indent",
+            "severity": "off"
+        },
+        {
+            "fixable": true,
+            "rule": "*-spacing",
+            "severity": "off"
+        },
+        {
+            "fixable": true,
+            "rule": "*-spaces",
+            "severity": "off"
+        },
+        {
+            "fixable": true,
+            "rule": "*-order",
+            "severity": "off"
+        },
+        {
+            "fixable": true,
+            "rule": "*-dangle",
+            "severity": "off"
+        },
+        {
+            "fixable": true,
+            "rule": "*-newline",
+            "severity": "off"
+        },
+        {
+            "fixable": true,
+            "rule": "*-style",
+            "severity": "off"
+        },
+        {
+            "fixable": true,
+            "rule": "*quotes",
+            "severity": "off"
+        },
+        {
+            "fixable": true,
+            "rule": "*semi",
+            "severity": "off"
+        }
+    ],
+    "[typescript]": {
+        "editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
+    },
+    "[jsonc]": {
+        "editor.defaultFormatter": "vscode.json-language-features"
+    },
+    "[json]": {
+        "editor.defaultFormatter": "vscode.json-language-features"
+    }
+}

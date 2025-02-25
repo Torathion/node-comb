@@ -1,7 +1,7 @@
 # nodehive
 
 <p align="center">
-<h1 align="center">Core bit math for faster performance</h1>
+<h1 align="center">Core library for fast and secure NodeJS projects</h1>
 <p align="center">
   <a href="https://www.npmjs.com/package/nodehive"><img src="https://img.shields.io/npm/v/nodehive?style=for-the-badge&logo=npm"/></a>
   <a href="https://npmtrends.com/nodehive"><img src="https://img.shields.io/npm/dm/nodehive?style=for-the-badge"/></a>

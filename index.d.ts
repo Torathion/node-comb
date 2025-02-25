@@ -1,7 +1,7 @@
 import { constants } from 'node:fs/promises'
-import type { Stats } from "fs"
-import type { FileHandle } from "fs/promises"
-import type { Values } from "typestar"
+import type { Stats } from 'fs'
+import type { FileHandle } from 'fs/promises'
+import type { Values } from 'typestar'
 
 declare module 'node-comb' {
     /**
@@ -98,7 +98,7 @@ declare module 'node-comb' {
      *  @param argv - the arguments of the process
      *  @returns true if a process contains the flag, otherwise false
      */
-    export function hasFlag(flag: string, argv: string[]): boolean
+    export function hasFlag(flag: string, argv?: string[]): boolean
     /**
      *  Check to determine if a file exists with the given permissions.
      *
@@ -202,4 +202,12 @@ declare module 'node-comb' {
      *  @returns - Either the file handle of the given path or undefined.
      */
     export function safeGetFileHandle(path: string, flags: string): Promise<FileHandle | undefined>
+    /**
+     *  Checks if a target file contains the target content.
+     *
+     * @param path - absolute path to the target file.
+     * @param content - content to contain.
+     * @returns `true`, if the file contains said content, otherwise `false`.
+     */
+    export function hasFileContent(path: string, content: string): Promise<boolean>
 }

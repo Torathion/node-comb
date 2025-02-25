@@ -1,3 +1,4 @@
+export { default as hasFileContent } from './hasFileContent'
 export { default as hasFlag } from './hasFlag'
 export { default as hasPermission } from './hasPermission'
 export { default as isDir } from './isDir'

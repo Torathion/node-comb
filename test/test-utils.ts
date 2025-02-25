@@ -1,6 +1,6 @@
 import { chmod, mkdir, rm, unlink, writeFile } from 'node:fs/promises'
 import type { MakeDirectoryOptions, RmOptions } from 'node:fs'
-import { Chmod } from 'src'
+import { Chmod } from '../src'
 import { join } from 'node:path'
 import { randomUUID } from 'node:crypto'
 import { vi, type MockInstance } from 'vitest'

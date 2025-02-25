@@ -1,4 +1,9 @@
-declare module 'nodehive' {
+import { constants } from 'node:fs/promises'
+import type { Stats } from "fs"
+import type { FileHandle } from "fs/promises"
+import type { Values } from "typestar"
+
+declare module 'node-comb' {
     /**
      *  States of `pathExists`.
      */

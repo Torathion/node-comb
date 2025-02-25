@@ -1,5 +1,5 @@
 {
-    "name": "nodehive",
+    "name": "node-comb",
     "version": "1.0.0",
     "description": "Core helper library for fast and secure NodeJS projects.",
     "types": "./index.d.ts",
@@ -24,13 +24,13 @@
         "nodejs"
     ],
     "author": "Torathion",
-    "homepage": "https://github.com/Torathion/nodehive",
+    "homepage": "https://github.com/Torathion/node-comb",
     "repository": {
         "type": "git",
-        "url": "https://github.com/Torathion/nodehive.git"
+        "url": "https://github.com/Torathion/node-comb.git"
     },
     "bugs": {
-        "url": "https://github.com/Torathion/nodehive/issues"
+        "url": "https://github.com/Torathion/node-comb/issues"
     },
     "license": "MIT",
     "sideEffects": false,

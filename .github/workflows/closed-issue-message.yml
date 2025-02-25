@@ -5,6 +5,10 @@ on:
 jobs:
     auto_comment:
         runs-on: ubuntu-latest
+
+        permissions:
+            contents: read
+            pull-requests: write
         steps:
             - uses: aws-actions/closed-issue-message@v2
               with:

@@ -24,13 +24,13 @@
         "nodejs"
     ],
     "author": "Torathion",
-    "homepage": "https://github.com/Torathion/bitbob",
+    "homepage": "https://github.com/Torathion/nodehive",
     "repository": {
         "type": "git",
-        "url": "https://github.com/Torathion/bitbob.git"
+        "url": "https://github.com/Torathion/nodehive.git"
     },
     "bugs": {
-        "url": "https://github.com/Torathion/bitbob/issues"
+        "url": "https://github.com/Torathion/nodehive/issues"
     },
     "license": "MIT",
     "sideEffects": false,

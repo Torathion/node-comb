@@ -210,4 +210,11 @@ declare module 'node-comb' {
      * @returns `true`, if the file contains said content, otherwise `false`.
      */
     export function hasFileContent(path: string, content: string): Promise<boolean>
+    /**
+     *  Checks if a specific endpoint of a given path exists.
+     *
+     * @param path - target path.
+     * @returns `true`, if the endpoint exists, otherwise `false`.
+     */
+    export function exists(path: string): Promise<boolean>
 }

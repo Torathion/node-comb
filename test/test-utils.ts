@@ -8,8 +8,12 @@ import { vi, type MockInstance } from 'vitest'
 const mkdirOptions: MakeDirectoryOptions = { recursive: true, mode: 0o777 }
 const rmOptions: RmOptions = { recursive: true, force: true }
 
-export function tempFileName(dir: string, ext = 'txt'): string {
-    return join(dir, `test-${randomUUID()}.${ext}`)
+export function tempFileName(dir: string, prefix?: string, ext = 'txt'): string {
+    return join(dir, `test-${prefix ? prefix + '-' : '' }${randomUUID()}.${ext}`)
+}
+
+export function tempDirName(dir: string, prefix?: string): string {
+    return join(dir, `test-${prefix ? prefix + '-' : '' }${randomUUID()}`)
 }
 
 // Utility to mock a stream's write method

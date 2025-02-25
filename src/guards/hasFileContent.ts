@@ -10,7 +10,7 @@ import readFile from 'src/fs/readFile'
 export default async function hasFileContent(path: string, content: string): Promise<boolean> {
     try {
         return content ? (await readFile(path)).toLowerCase().includes(content.toLowerCase()) : false
-    } catch (err) {
+    } catch {
         return false
     }
 }

@@ -27,8 +27,8 @@ importers:
         specifier: 5.7.3
         version: 5.7.3
       typestar:
-        specifier: 1.2.0
-        version: 1.2.0
+        specifier: 1.6.0
+        version: 1.6.0
       vitest:
         specifier: 3.0.7
         version: 3.0.7(@types/node@22.13.8)(stylus@0.57.0)
@@ -2462,8 +2462,8 @@ packages:
     engines: {node: '>=14.17'}
     hasBin: true
 
-  typestar@1.2.0:
-    resolution: {integrity: sha512-8kgS85gX8R8zyg4Ie0D6/1hDQwcA4xPF8MGUBdfjagwDO1s0pWfKPMRrq7mOmO35o8Rw7zIm6ke43+ZGQNmpNA==}
+  typestar@1.6.0:
+    resolution: {integrity: sha512-5Wn9tv8u8Y68CDqiKmq/8ma3F7MMSpsWBaKT/IB+rlmGEdPTIVzMAuEjX0zEy4LKIXUJEZKbCqK/LFj3L5N9ZA==}
 
   unbox-primitive@1.1.0:
     resolution: {integrity: sha512-nWJ91DjeOkej/TA8pXQ3myruKpKEYgqvpw9lz4OPHj/NWFNluYrjbz9j01CJ8yKQd2g4jFoOkINCTW2I5LEEyw==}
@@ -5558,7 +5558,7 @@ snapshots:
 
   typescript@5.7.3: {}
 
-  typestar@1.2.0: {}
+  typestar@1.6.0: {}
 
   unbox-primitive@1.1.0:
     dependencies:

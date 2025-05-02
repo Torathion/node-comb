@@ -21,6 +21,7 @@ export default defineConfig({
             provider: 'v8',
             exclude: [
                 '**/*.js',
+                '**/test-utils.ts',
                 '**/*.d.ts',
                 '**/types/',
                 '**/index.ts',

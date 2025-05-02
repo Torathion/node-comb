@@ -1,6 +1,6 @@
 import { writeFile } from 'fs/promises'
 import { dirname, join } from "path";
-import { describe, beforeEach, afterEach, it, expect } from "vitest";
+import { describe, it, expect, beforeAll, afterAll } from "vitest";
 import { readLines } from '../../src'
 import { cleanupDir, createTempDir } from '../test-utils';
 import { fileURLToPath } from 'url';
@@ -10,12 +10,12 @@ describe('readLines', () => {
   const tempDir = join(currentFolder, 'temp-readFile')
 
   // Set up temporary directory before each test
-  beforeEach(async () => {
+  beforeAll(async () => {
     await createTempDir(tempDir)
   });
 
   // Clean up temporary directory after each test
-  afterEach(async () => {
+  afterAll(async () => {
     await cleanupDir(tempDir)
   });
 

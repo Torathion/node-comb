@@ -7,7 +7,7 @@ declare module 'node-comb' {
     /**
      *  States of `pathExists`.
      */
-    export const enum PathExistsState {
+    export const enum PathExistsCode {
         /**
          * Path does not exist.
          */
@@ -151,7 +151,7 @@ declare module 'node-comb' {
      * @param path - The absolute path to either a directory or file.
      * @returns `0`, if the path was not found, `1`, if the path points to a file, `2`, if the path points to a directory, otherwise `3`.
      */
-    export function pathExists(path: string): Promise<PathExistsState>
+    export function pathExists(path: string): Promise<PathExistsCode>
     /**
      *  Checks if a file exists and ensures it exists before writing.
      *

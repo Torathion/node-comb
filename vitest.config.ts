@@ -15,6 +15,12 @@ export default defineConfig({
         exclude: []
     },
     test: {
+        pool: 'forks',
+        poolOptions: {
+            forks: {
+                singleFork: true
+            }
+        },
         coverage: {
             enabled: true,
             all: true,

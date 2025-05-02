@@ -1,7 +1,6 @@
 import { basename, dirname, isAbsolute, join, parse } from 'node:path'
-import { cwd as CWD } from 'src/constants'
-import { PathExistsState } from 'src/types/enums'
-import { InvalidPathTypeError, PathNotFoundError } from '../errors'
+import { cwd as CWD, PathExistsCode } from 'src/constants'
+import { PathNotFoundError } from '../errors'
 import pathExists from '../guards/pathExists'
 
 /**
@@ -15,28 +14,19 @@ import pathExists from '../guards/pathExists'
  */
 export default async function find(path: string, dir?: boolean, cwd = CWD): Promise<string> {
     const fullPath = isAbsolute(path) ? path : join(cwd, path)
-    switch (await pathExists(fullPath)) {
-        case PathExistsState.Dir:
-        case PathExistsState.File:
-            return fullPath
-        case PathExistsState.None:
-            return await findUp(fullPath, dir)
-        case PathExistsState.Unknown:
-            throw new InvalidPathTypeError(fullPath)
-    }
+    return (await pathExists(fullPath)) === PathExistsCode.Unknown ? await findUp(fullPath, dir) : fullPath
 }
 
 async function findUp(fullPath: string, dir?: boolean): Promise<string> {
     const root = parse(fullPath).root
     const fileName = basename(fullPath)
-    const checkState = dir ? PathExistsState.Dir : PathExistsState.File
-    let state: PathExistsState = PathExistsState.None
+    const checkState = dir ? PathExistsCode.Dir : PathExistsCode.File
+    let state: string = PathExistsCode.Unknown
     let path = fullPath
     while (path !== root && state !== checkState) {
         path = dirname(path)
         state = await pathExists(join(path, fileName))
-        if (state === PathExistsState.Unknown) throw new InvalidPathTypeError(fullPath)
     }
-    if (state === PathExistsState.None) throw new PathNotFoundError(fullPath)
+    if (state === PathExistsCode.Unknown) throw new PathNotFoundError(fullPath)
     return join(path, fileName)
 }

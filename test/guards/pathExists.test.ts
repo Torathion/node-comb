@@ -1,8 +1,8 @@
+import { PathExistsCode } from './../../src/constants';
 import { symlink } from 'node:fs/promises'
 import { dirname, join } from 'node:path'
 import { afterAll, beforeAll, describe, expect, it } from 'vitest'
 import { pathExists } from '../../src'
-import { PathExistsState } from '../../src/types/enums'
 import { cleanup, cleanupDir, createTempDir, createTempFile } from '../test-utils'
 import { fileURLToPath } from 'node:url'
 
@@ -25,24 +25,24 @@ describe('pathExists', () => {
     })
 
     it('should return 0 for a non-existent path', async () => {
-        expect(await pathExists(nonExistentPath)).toBe(PathExistsState.None)
+        expect(await pathExists(nonExistentPath)).toBe(PathExistsCode.Unknown)
     })
 
     it('should return 1 for a file', async () => {
         await createTempFile(tempFilePath, 'test content')
-        expect(await pathExists(tempFilePath)).toBe(PathExistsState.File)
+        expect(await pathExists(tempFilePath)).toBe(PathExistsCode.File)
     })
 
     it('should return 2 for a directory', async () => {
         await createTempDir(tempDirPath)
-        expect(await pathExists(tempDirPath)).toBe(PathExistsState.Dir)
+        expect(await pathExists(tempDirPath)).toBe(PathExistsCode.Dir)
     })
 
     it('should return 0 for a broken symbolic link', async () => {
         const symlinkPath = join(tempDir, 'broken-symlink')
         await symlink(nonExistentPath, symlinkPath)
 
-        expect(await pathExists(symlinkPath)).toBe(PathExistsState.None)
+        expect(await pathExists(symlinkPath)).toBe(PathExistsCode.Unknown)
 
         // Clean up the symbolic link
         await cleanup(symlinkPath)
@@ -54,7 +54,7 @@ describe('pathExists', () => {
         await symlink(tempFilePath, symlinkPath)
 
         const result = await pathExists(symlinkPath)
-        expect(result).toBe(PathExistsState.File)
+        expect(result).toBe(PathExistsCode.File)
 
         // Clean up the symbolic link
         await cleanup(symlinkPath)
@@ -65,7 +65,7 @@ describe('pathExists', () => {
         const symlinkPath = join(tempDir, 'valid-symlink-dir')
         await symlink(tempDirPath, symlinkPath)
 
-        expect(await pathExists(symlinkPath)).toBe(PathExistsState.Dir)
+        expect(await pathExists(symlinkPath)).toBe(PathExistsCode.Dir)
 
         // Clean up the symbolic link
         await cleanup(symlinkPath)

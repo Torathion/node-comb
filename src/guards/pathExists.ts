@@ -1,5 +1,5 @@
+import { PathExistsCode } from '../constants';
 import { stat } from 'node:fs/promises'
-import type { PathExistsState } from 'src/types'
 import { Permissions } from 'src/constants'
 import hasPermission from './hasPermission'
 
@@ -9,14 +9,15 @@ import hasPermission from './hasPermission'
  * @param path - The absolute path to either a directory or file.
  * @returns `0`, if the path was not found, `1`, if the path points to a file, `2`, if the path points to a directory, otherwise `3`.
  */
-export default async function pathExists(path: string): Promise<PathExistsState> {
+export default async function pathExists(path: string): Promise<string> {
     try {
-        if (!(await hasPermission(path, Permissions.Exists))) return 0
+        if (!(await hasPermission(path, Permissions.Exists))) return PathExistsCode.Unknown
         const stats = await stat(path)
-        if (stats.isFile()) return 1
-        if (stats.isDirectory()) return 2
-        return 3
+        if (stats.isSymbolicLink()) return PathExistsCode.Link
+        if (stats.isDirectory()) return PathExistsCode.Dir
+        if (stats.isSocket()) return PathExistsCode.Socket
+        return stats.isFile() ? PathExistsCode.File : PathExistsCode.Unknown
     } catch {
-        return 0
+        return PathExistsCode.Unknown
     }
 }

@@ -1,6 +1,5 @@
-import { PathExistsCode } from '../constants';
 import { stat } from 'node:fs/promises'
-import { Permissions } from 'src/constants'
+import { PathExistsCode , Permissions } from 'src/constants'
 import hasPermission from './hasPermission'
 
 /**

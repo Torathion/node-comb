@@ -23,11 +23,11 @@ export const Chmod = {
 }
 
 export const PathExistsCode = {
-    Unknown: '',
-    File: '-',
     Dir: 'd',
+    File: '-',
     Link: 'l',
     Socket: 's',
+    Unknown: ''
 }
 
 export { stripVTControlCharacters as stripAnsi } from 'node:util'

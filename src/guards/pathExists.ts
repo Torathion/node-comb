@@ -1,5 +1,5 @@
 import { stat } from 'node:fs/promises'
-import { PathExistsCode, Permissions } from 'src/constants'
+import { FSEntity, Permissions } from 'src/constants'
 import hasPermission from './hasPermission'
 
 /**
@@ -10,13 +10,13 @@ import hasPermission from './hasPermission'
  */
 export default async function pathExists(path: string): Promise<string> {
     try {
-        if (!(await hasPermission(path, Permissions.Exists))) return PathExistsCode.Unknown
+        if (!(await hasPermission(path, Permissions.Exists))) return FSEntity.Unknown
         const stats = await stat(path)
-        if (stats.isSymbolicLink()) return PathExistsCode.Link
-        if (stats.isDirectory()) return PathExistsCode.Dir
-        if (stats.isSocket()) return PathExistsCode.Socket
-        return stats.isFile() ? PathExistsCode.File : PathExistsCode.Unknown
+        if (stats.isSymbolicLink()) return FSEntity.Link
+        if (stats.isDirectory()) return FSEntity.Dir
+        if (stats.isSocket()) return FSEntity.Socket
+        return stats.isFile() ? FSEntity.File : FSEntity.Unknown
     } catch {
-        return PathExistsCode.Unknown
+        return FSEntity.Unknown
     }
 }

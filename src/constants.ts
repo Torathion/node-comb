@@ -22,7 +22,7 @@ export const Chmod = {
     Writeable: 0o555
 }
 
-export const PathExistsCode = {
+export const FSEntity = {
     Dir: 'd',
     File: '-',
     Link: 'l',

@@ -15,15 +15,15 @@ declare module 'node-comb' {
         Write: typeof constants.W_OK
     }
     /**
-     *  A union type representing the possible values returned by `pathExists` or used in `PathExistsCode`.
+     *  A union type representing the possible values returned by `pathExists` or used in `FSEntity`.
      *  These values indicate the type of a file system entity or an unknown state.
      */
-    export type PathExistsCodeValues = 'd' | '-' | 'l' | 's' | ''
+    export type FSEntityValues = 'd' | '-' | 'l' | 's' | ''
     /**
      *  An object mapping file system entity types to their corresponding single-character codes.
      *  Used to identify the type of a path in `pathExists`.
      */
-    export const PathExistsCode: {
+    export const FSEntity: {
         /**
          * Represents a directory.
          */
@@ -189,7 +189,7 @@ declare module 'node-comb' {
      * @param path - The absolute path to either a directory or file.
      * @returns `0`, if the path was not found, `1`, if the path points to a file, `2`, if the path points to a directory, otherwise `3`.
      */
-    export function pathExists(path: string): Promise<PathExistsCode>
+    export function pathExists(path: string): Promise<FSEntity>
     /**
      *  Checks if a file exists and ensures it exists before writing.
      *

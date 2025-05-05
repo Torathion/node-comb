@@ -22,12 +22,12 @@ export const Chmod = {
     Writeable: 0o555
 }
 
-export const PathExistsCode = {
-    Unknown: '',
-    File: '-',
+export const FSEntity = {
     Dir: 'd',
+    File: '-',
     Link: 'l',
     Socket: 's',
+    Unknown: ''
 }
 
 export { stripVTControlCharacters as stripAnsi } from 'node:util'

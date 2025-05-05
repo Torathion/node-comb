@@ -1,4 +1,4 @@
-import { PathExistsCode } from './../../src/constants';
+import { PathExistsCode } from './../../src/constants'
 import { symlink } from 'node:fs/promises'
 import { dirname, join } from 'node:path'
 import { afterAll, beforeAll, describe, expect, it } from 'vitest'

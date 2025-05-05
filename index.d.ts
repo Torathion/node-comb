@@ -5,27 +5,6 @@ import type { Values } from 'typestar'
 
 declare module 'node-comb' {
     /**
-     *  States of `pathExists`.
-     */
-    export const enum PathExistsCode {
-        /**
-         * Path does not exist.
-         */
-        None,
-        /**
-         * Path exists and is a file.
-         */
-        File,
-        /**
-         * Path exists and is a directory.
-         */
-        Dir,
-        /**
-         * Path exists, but is neither a file nor a directory
-         */
-        Unknown
-    }
-    /**
      *  Interface of `Permissions` holding the types of each file permission constant.
      */
     export interface FilePermissions {
@@ -34,6 +13,65 @@ declare module 'node-comb' {
         Exists: typeof constants.F_OK
         Read: typeof constants.R_OK
         Write: typeof constants.W_OK
+    }
+    /**
+     *  A union type representing the possible values returned by `pathExists` or used in `PathExistsCode`.
+     *  These values indicate the type of a file system entity or an unknown state.
+     */
+    export type PathExistsCodeValues = 'd' | '-' | 'l' | 's' | ''
+    /**
+     *  An object mapping file system entity types to their corresponding single-character codes.
+     *  Used to identify the type of a path in `pathExists`.
+     */
+    export const PathExistsCode: {
+        /**
+         * Represents a directory.
+         */
+        readonly Dir: 'd'
+        /**
+         * Represents a regular file.
+         */
+        readonly File: '-'
+        /**
+         * Represents a symbolic link.
+         */
+        readonly Link: 'l'
+        /**
+         * Represents a socket.
+         */
+        readonly Socket: 's'
+        /**
+         * Represents an unknown or non-existent path.
+         */
+        readonly Unknown: ''
+    }
+
+    /**
+     *  A union type representing the possible permission modes used in `Chmod`.
+     *  These are octal values for file system permissions.
+     */
+    export type ChmodValues = 0o777 | 0o000 | 0o444 | 0o555
+    /**
+     *  An object mapping permission mode names to their octal values.
+     *  Used to set file system permissions in operations like `chmod`.
+     */
+    export const Chmod: {
+        /**
+         *  Full permissions (read, write, execute) for owner, group, and others (0o777).
+         */
+        readonly All: 0o777
+        /**
+         *  No permissions for owner, group, or others (0o000).
+         */
+        readonly Locked: 0o000
+        /**
+         *  Read-only permissions for owner, group, and others (0o444).
+         */
+        readonly Readonly: 0o444
+        /**
+         *  Write and execute permissions for owner, group, and others (0o555).
+         */
+        readonly Writeable: 0o555
     }
     /**
      *  NodeJS token of `utils.parseArgs`.
